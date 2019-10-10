@@ -5,8 +5,6 @@
 	--fuente:'sans-serif', Helvetica;
 }
 
-
-
 /* Reset para REM */
 
 html{
@@ -47,6 +45,10 @@ body{
 
 .contenedor-barra{
 	background-color: var(--primarioOscuro);
+}
+
+.bg-blanco{
+	background-color: white;
 }
 
 .bg-amarillo{
@@ -135,4 +137,82 @@ legend span{
 	.campo input[type="submit"]{
 		flex:0 0 auto;
 	}
+}
+
+h2{
+	font-size: 2rem;
+	color: var(--primario);
+}
+
+.contacto{
+	padding: 2rem;
+	margin-top: 3rem;
+}
+
+.contenedor-contactos{
+	max-width: 800px;
+	margin: 4rem auto 0 auto;
+}
+
+.total-contactos{
+	margin: 2rem 0;
+	text-align: center;
+	color: var(--primario);
+	font-size: 2rem;
+}
+
+.total-contactos span{
+	font-size: 3rem;
+	font-weight: 900;
+}
+
+.buscador{
+	width: 100%;
+	height: 4rem;
+	padding: 1rem;
+	border: 1px solid #e1e1e1;
+	margin: 2rem 0;
+}
+
+table{
+	width: 100%;/*para que tome todo el espacio disponible */
+	margin-top: 1rem;
+	border-collapse: collapse;
+}
+
+.listado-contactos thead{
+	background-color: var(--primario);
+	color: white;
+	text-transform: uppercase;
+
+}
+
+.listado-contactos thead tr th{
+	padding: 1rem 0;
+}
+
+.listado-contactos tbody tr td{
+	padding: .5rem;
+}
+
+.listado-contactos button{
+	background-color: transparent!important;
+	border: none;
+}
+
+.btn{
+	font-size: 2rem;
+	text-decoration: none;
+}
+
+.btn-editar{
+	color: var(--secundario);
+}
+
+.btn-borrar{
+	color: var(--primario);
+}
+
+.contenedor-tabla{
+	overflow: scroll;/*Para que la tabla sea responsive */
 }
