@@ -2,6 +2,7 @@
 	--primario:#00478a;
 	--secundario: #FFC107;
 	--primarioOscuro:#002344;
+	--volver:#d4a700;
 	--fuente:'sans-serif', Helvetica;
 }
 
@@ -45,6 +46,7 @@ body{
 
 .contenedor-barra{
 	background-color: var(--primarioOscuro);
+	height: 5rem;
 }
 
 .bg-blanco{
@@ -58,18 +60,26 @@ body{
 /*Procedo a usar grid, en la vista editar */
 .barra{
 	display: grid;
-	grid-template-columns: 100px 1fr;/*Para definir el area */
-	align-items: center; 
+	grid-template-columns: 92px 1fr;/*Para definir el area */
+	align-items: center;
 }
 
 .volver{
 	background-color: var(--secundario);
-	border-radius: 5px;
+	border-radius: 3px;
 	text-align: center;
 	color: black;
-	font-weight: 700;
+	font-weight: 400;
 	padding: .5rem;
+	margin: .5rem;
 	font-size: 1.2rem;
+	height: 30px;
+}
+
+.volver:hover{
+	background-color: var(--volver);
+	transition: background-color .5s ease-in-out;
+	padding: .6rem;
 }
 
 .sombra{
@@ -232,4 +242,28 @@ table{
 
 .contenedor-tabla{
 	overflow: scroll;/*Para que la tabla sea responsive */
+}
+
+/*** Notificacion de error ***/
+.notificacion{
+	position: fixed; /*Para posicionar la notificacion */
+	top:1rem;
+	right: 1rem;
+	padding: 1rem 3rem;
+	opacity: 0;
+	transition: opacity .5s ease;
+}
+.visible{
+	opacity: 1;
+}
+
+/** Colores de las clases **/
+.correcto{
+	background-color: rgb(179,241,117);
+	color:green;
+}
+
+.error{
+	background-color: rgb(238,148,166);
+	color:rgb(163,0,33);
 }
