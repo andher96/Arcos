@@ -17,5 +17,6 @@
 </div><!--Campos -->
 <!--Boton -->
 <div class="campo enviar">
+	<input type="hidden" id="accion" value="crear">
 	<input type="submit" value="Añadir Contacto">
 </div><!--Campo, enviar -->	
