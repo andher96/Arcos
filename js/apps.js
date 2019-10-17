@@ -38,16 +38,17 @@ function leerFormulario(e){
 
 //Funcion para insertar datos en la base de datos
 function insertarBD(contactoInfo){
-	//llamo a ajax
-
+	//Empezamos con ajax
 	//creo el objeto
 	const xhr = new XMLHttpRequest();
 	//Me conecto, tipo de peticion, a donde se van enviar, true para que sea asincrono
-	xhr.open('POST','includes/modelos/modelo-contactos.php',true);
+	xhr.open('POST','includes/modelos/modelo-contacto.php',true);
 	//Leo la respuesta
 	xhr.onload = function() {
           if(this.status === 200) {
                console.log(JSON.parse(xhr.responseText)); 
+               const respuesta = JSON.parse(xhr.responseText);
+               console.log(respuesta.empresa);
           }
      }
 	//envio los datos
