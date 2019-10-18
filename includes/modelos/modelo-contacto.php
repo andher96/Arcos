@@ -12,24 +12,26 @@ if ($_POST['accion']=='crear') {
 		//Llamo a mi conexion en la base de datos
 		$stmt = $conexion->prepare("INSERT INTO contactos(nombre,empresa,telefono) VALUES(?,?,?)");
 		//coloco los datos a insertar, los 3 son string
-		$stmt->bind_param("sss",$nombre,$empresa,$telefono);
+		$stmt->bindParam(1,$nombre);
+		$stmt->bindParam(2,$empresa);
+		$stmt->bindParam(3,$telefono);
 		//ejecuto
 		$stmt->execute();
-		if($stmt->affected_rows == 1){
+		$affected = $stmt->rowCount();
+		if($affected > 0){
 				$respuesta = array(
 				'respuesta' => 'correcto',
 				'datos' => array(
 					'nombre'=>$nombre,
 					'empresa'=>$empresa,
-					'telefono'=>$telefono,
-					'id_insertado'=>$stmt->insert_id
+					'telefono'=>$telefono
 				)
 			);
 		}
 		//cierro
-		$stmt->close();
+		$stmt = null;
 		//cierro la conexion a la base de datos
-		$conexion->close();
+		$conexion = null;
 
 	}catch(Exception $e){
 		$respuesta = array(

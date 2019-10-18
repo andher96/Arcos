@@ -48,7 +48,7 @@ function insertarBD(contactoInfo){
           if(this.status === 200) {
                console.log(JSON.parse(xhr.responseText)); 
                const respuesta = JSON.parse(xhr.responseText);
-               console.log(respuesta.empresa);
+               console.log(respuesta.datos.empresa);
           }
      }
 	//envio los datos
