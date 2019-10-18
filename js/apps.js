@@ -1,5 +1,6 @@
 //Selecciono el ID contacto
 const formularioContactos = document.querySelector('#contacto');
+const listadoContactos = document.querySelector('#listado-contactos tbody');
 
 eventListeners();
 
@@ -48,7 +49,50 @@ function insertarBD(contactoInfo){
           if(this.status === 200) {
                console.log(JSON.parse(xhr.responseText)); 
                const respuesta = JSON.parse(xhr.responseText);
-               console.log(respuesta.datos.empresa);
+               /*	Muestro el arreglo respuesta y accedo a los datos
+                que fueron declarados en el modelo 
+               console.log(respuesta.datos); */
+
+               //inserto elementos a la tabla
+               const nuevoContacto = document.createElement('tr');
+               nuevoContacto.innerHTML = `
+                    <td>${respuesta.datos.nombre}</td>
+                    <td>${respuesta.datos.empresa}</td>
+                    <td>${respuesta.datos.telefono}</td>
+               `;
+               //Ahora los botones
+               const contenedorAcciones = document.createElement('td');
+               //icono editar
+               const iconoEditar = document.createElement('i');
+               iconoEditar.classList.add('tiny','material-icons');
+               iconoEditar.innerHTML = `<i class="tiny material-icons">edit</i>`;
+               //enlace a editar
+               const btnEditar = document.createElement('a');
+               btnEditar.appendChild(iconoEditar);
+               btnEditar.href=`editar.php?id=${respuesta.datos.nombre}`
+               btnEditar.classList.add('btn','btn-editar');
+               //agrego el boton
+               contenedorAcciones.appendChild(btnEditar);
+               //crear el icono eliminar
+               const iconoEliminar = document.createElement('i');
+               iconoEliminar.classList.add('tiny','material-icons');
+               iconoEliminar.innerHTML = `<i class="tiny material-icons">delete_forever</i>`;
+               //boton eliminar
+               const btnEliminar = document.createElement('button');
+               btnEliminar.appendChild(iconoEliminar);
+               btnEliminar.setAttribute('data-id',respuesta.datos.telefono);
+               btnEliminar.classList.add('btn','btn-borrar');
+               //agrego el boton eliminar
+               contenedorAcciones.appendChild(btnEliminar);
+               //Se agrega al tr
+               nuevoContacto.appendChild(contenedorAcciones);
+               //agreo el contacto
+               listadoContactos.appendChild(nuevoContacto);
+               //resetear el formulario
+               document.querySelector('form').reset();
+               //Notificacion
+               mostrarNotificacion('Contacto creado exitosamente','correcto');
+
           }
      }
 	//envio los datos
