@@ -1,4 +1,7 @@
-<?php include 'includes/layout/header.php'; ?>
+<?php
+	include 'includes/layout/header.php'; 
+	include 'includes/funciones/consultas.php';
+?>
 
 <div class="contenedor-barra centrar-texto blanco">
 	<h1>Agenda para el Registro Contactos de la Organización</h1>
@@ -31,41 +34,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Andherson</td>
-						<td>Wanai</td>
-						<td>66995959595955</td>
-						<td>
-							<a class="btn-editar btn" href="editar.php?id=1"><i class="tiny material-icons">edit</i></a>
-							<button class="btn-borrar btn" type="button" data-id="1">
-								<i class="tiny material-icons">delete_forever</i>
-							</button>
-						</td>
-					</tr>
-
-					<tr>
-						<td>Andherson otra vez</td>
-						<td>Wanai</td>
-						<td>66995959595955</td>
-						<td>
-							<a class="btn-editar btn" href="editar.php?id=1"><i class="tiny material-icons">edit</i></a>
-							<button class="btn-borrar btn" type="button" data-id="1">
-								<i class="tiny material-icons">delete_forever</i>
-							</button>
-						</td>
-					</tr>
-
-					<tr>
-						<td>Otra vez Andherson</td>
-						<td>Wanai</td>
-						<td>66995959595955</td>
-						<td>
-							<a class="btn-editar btn" href="editar.php?id=1"><i class="tiny material-icons">edit</i></a>
-							<button class="btn-borrar btn" type="button" data-id="1">
-								<i class="tiny material-icons">delete_forever</i>
-							</button>
-						</td>
-					</tr>
+					<?php $contactos = obtenerContactos();  
+						foreach($contactos as $contacto){ ?><!--Cierro -->
+							<tr>
+								<td><?php print $contacto['nombre'];?></td>
+								<td><?php print $contacto['empresa'];?></td>
+								<td><?php print $contacto['telefono'];?></td>
+								<td>
+									<a class="btn-editar btn" href="editar.php?id=1"><i class="tiny material-icons">edit</i></a>
+									<button class="btn-borrar btn" type="button" data-id="1">
+										<i class="tiny material-icons">delete_forever</i>
+									</button>
+								</td>
+							</tr>
+					<?php } 
+				?><!-- Cierro nuevamente Php-->
 				</tbody>
 			</table>
 		</div><!--Contenedor table -->

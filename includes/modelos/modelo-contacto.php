@@ -6,7 +6,7 @@ if ($_POST['accion']=='crear') {
 	//valido las entradas, para evitar inyecciones sql
 	$nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
 	$empresa = filter_var($_POST['empresa'], FILTER_SANITIZE_STRING);
-	$telefono = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+	$telefono = filter_var($_POST['telefono'], FILTER_SANITIZE_STRING);
 
 	try{
 		//Llamo a mi conexion en la base de datos
